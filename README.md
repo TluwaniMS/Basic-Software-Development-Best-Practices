@@ -2,7 +2,7 @@
 
 ## 1. Function Rules:
 
-Functions should either `answer` something or `do` something.
+i. Functions should either `answer` something or `do` something.
 
 `Answer`
 ```
@@ -23,6 +23,31 @@ const user = {
 
 const generateAnEmailForTheUser = (user) => `${user.name}@mock.com`;
 ```
+
+ii. Single Responsibility Principle.
+
+`NB!` Functions should do only one thing .
+
+`Bad Practice`
+
+```
+const generateAnArrayWithTenNumbersAnReturnTheEvenNumbers = () => {
+  const arrayWithTenNumbers = [...Array(10).keys()];
+
+  const evenNumbers = arrayWithTenNumbers.filter((number) => !(number % 2));
+
+  return evenNumbers;
+};
+```
+
+`Good Practice`
+
+```
+const arrayWithTenNumbers = [...Array(10).keys()];
+
+const extractEvenNumbersFromArray = (numbersArray) => numbersArray.filter((number) => !(number % 2));
+```
+
 ## 2. Variable / Function Naming Best Practices:
 ## 3. Deep Nesting / Nested Loops:
 ## 4. Higher Order Array Functions Callback Function Parameters:
