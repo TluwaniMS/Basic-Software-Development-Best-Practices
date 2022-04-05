@@ -103,6 +103,114 @@ const getUserById = (userId)=>{/*...*/}
 ```
 ## 3. Deep Nesting / Nested Loops:
 
+`NB!` Avoid nested loops at all times, because they leave the code in a messy state and make it hard to maintain.
+
+```
+const schools = [
+  {
+    name: "Kgwadu Primary School",
+    students: [
+      {
+        name: "Lerato",
+        age: 12,
+        gender: "Male",
+        grade: 6,
+        sports: ["Soccer", "Swimming", "Rugby"]
+      },
+      {
+        name: "Morokolo",
+        age: 10,
+        gender: "Male",
+        grade: 4,
+        sports: ["Soccer", "Rugby"]
+      },
+      {
+        name: "Lufuno",
+        age: 13,
+        gender: "Female",
+        grade: 7,
+        sports: ["Netball", "Swimming"]
+      }
+    ]
+  },
+  {
+    name: "Mamotshana Primary School",
+    students: [
+      {
+        name: "Refilwe",
+        age: 9,
+        gender: "Female",
+        grade: 3,
+        sports: ["Netball"]
+      },
+      {
+        name: "Kgaogelo",
+        age: 10,
+        gender: "Female",
+        grade: 4,
+        sports: ["Netball", "Swimming"]
+      },
+      {
+        name: "Mokgadi",
+        age: 8,
+        gender: "Female",
+        grade: 2,
+        sports: []
+      }
+    ]
+  },
+  {
+    name: "Mosima Primary School",
+    students: [
+      {
+        name: "Hloni",
+        age: 9,
+        gender: "Male",
+        grade: 3,
+        sports: ["Soccer", "Rugby"]
+      },
+      {
+        name: "Themba",
+        age: 11,
+        gender: "Male",
+        grade: 5,
+        sports: ["Soccer"]
+      },
+      {
+        name: "Tebogo",
+        age: 12,
+        gender: "Male",
+        grade: 6,
+        sports: ["Swimming", "Rugby"]
+      }
+    ]
+  }
+];
+```
+
+* Requirements:
+
+Get all the male from every school that participate in both rugby and soccer.
+
+`Bad Practice`
+
+```
+const maleStudentsThatParticipateInBothSoccerAndRugby = [];
+
+schools.forEach((school) => {
+  school.students.forEach((student) => {
+    if (
+      student.sports.includes("Soccer") &&
+      student.sports.includes("Rugby") &&
+      student.gender === "Male"
+    ) {
+      maleStudentsThatParticipateInBothSoccerAndRugby.push(student);
+    } else {
+      // pass
+    }
+  });
+});
+```
 
 ## 4. Higher Order Array Functions Callback Function Parameters:
 
