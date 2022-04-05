@@ -105,6 +105,24 @@ const getUserById = (userId)=>{/*...*/}
 
 
 ## 4. Higher Order Array Functions Callback Function Parameters:
+
+Avoid naming  `Higher Order Array Functions` `Callback Function` parameters with no context
+
+`Bad Practice`
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const numbersMultipliedByTwo = numbers.map((resp) => resp * 2);
+```
+
+`Good Practice`
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const numbersMultipliedByTwo = numbers.map((number) => number * 2);
+```
 ## 5. DRY (Don't Repeat Yourself:
 ## 6. Magic Numbers/Strings:
 
