@@ -279,6 +279,80 @@ const numbers = [1, 2, 3, 4, 5];
 const numbersMultipliedByTwo = numbers.map((number) => number * 2);
 ```
 ## 5. DRY (Don't Repeat Yourself:
+
+`Bad Practice`
+
+```
+const productsInCart = [
+  { name: "Soap", price: 10.5 },
+  { name: "Meat", price: 25.0 },
+  { name: "Milk", price: 12.0 },
+  { name: "Bread", price: 15.0 }
+];
+
+const calculateProductsPriceWithTax = (products, valueAddedTax) => {
+  const productsTotalPriceExcludingTax = products.reduce(
+    (previousTotal, currentProductPrice) => {
+      return previousTotal + currentProductPrice.price;
+    },
+    0
+  );
+
+  const productsTotalIncludingTax =
+    productsTotalPriceExcludingTax * (1 + valueAddedTax);
+
+  return productsTotalIncludingTax;
+};
+
+const createMessageToAlertUserOfTotalCartCost = (products) => {
+  const totalCartCost = products.reduce(
+    (previousTotal, currentProductPrice) => {
+      return previousTotal + currentProductPrice.price;
+    },
+    0
+  );
+
+  return `Your cart requires R${totalCartCost} to be cleared.`;
+};
+```
+
+`Good Practice`
+
+```
+const productsInCart = [
+  { name: "Soap", price: 10.5 },
+  { name: "Meat", price: 25.0 },
+  { name: "Milk", price: 12.0 },
+  { name: "Bread", price: 15.0 }
+];
+
+const calculateProductsPrice = (products) => {
+  const productsTotalPrice = products.reduce(
+    (previousTotal, currentProductPrice) => {
+      return previousTotal + currentProductPrice.price;
+    },
+    0
+  );
+
+  return productsTotalPrice;
+};
+
+const calculateProductsPriceWithTax = (products, valueAddedTax) => {
+  const productsTotalPriceExcludingTax = calculateProductsPrice(products);
+
+  const productsTotalIncludingTax =
+    productsTotalPriceExcludingTax * (1 + valueAddedTax);
+
+  return productsTotalIncludingTax;
+};
+
+const createMessageToAlertUserOfTotalCartCost = (products) => {
+  const totalCartCost = calculateProductsPrice(products);
+
+  return `Your cart requires R${totalCartCost} to be cleared.`;
+};
+```
+
 ## 6. Magic Numbers/Strings:
 
 Avoid Magic strings/numbers at all costs, and rather create a file with enumerators or variables to contain the values.
