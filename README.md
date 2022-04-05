@@ -2,7 +2,7 @@
 
 ## 1. Function Rules:
 
-i. Functions should either `answer` something or `do` something.
+i. Functions should either `Answer` something or `Do` something.
 
 `Answer`
 ```
