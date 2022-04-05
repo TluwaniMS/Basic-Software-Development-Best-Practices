@@ -190,7 +190,7 @@ const schools = [
 
 * Requirements:
 
-Get all the male from every school that participate in both rugby and soccer.
+Get all the male students from every school that participate in both rugby and soccer.
 
 `Bad Practice`
 
@@ -210,6 +210,53 @@ schools.forEach((school) => {
     }
   });
 });
+```
+
+`Best Practice`
+
+```
+const maleStudentsThatParticipateInBothSoccerAndRugby = [];
+
+const extractStudentsByGenderAndRelevantSports = (
+  students,
+  gender,
+  ...sports
+) => {
+  const studentsMatchingTheRequiredParameters = [];
+
+  students.forEach((student) => {
+    const studentMatchesTheRequiredGender = student.gender === gender;
+    const totalSportsTheStudentParticipatesInThatMatchTheRequiredSports = student.sports.filter(
+      (sport) => sports.includes(sport)
+    ).length;
+    const totalSportsThatTheStudentIsRequiredToParticipateIn = sports.length;
+
+    const totalSportsTheUserParticipatesInMatchesTheTotalSportsRequired =
+      totalSportsTheStudentParticipatesInThatMatchTheRequiredSports ===
+      totalSportsThatTheStudentIsRequiredToParticipateIn;
+
+    studentMatchesTheRequiredGender &&
+    totalSportsTheUserParticipatesInMatchesTheTotalSportsRequired
+      ? studentsMatchingTheRequiredParameters.push(student)
+      : "";
+  });
+
+  return studentsMatchingTheRequiredParameters;
+};
+
+schools.forEach((school) => {
+  const studentsThatMatchTheRequiredParameters = extractStudentsByGenderAndRelevantSports(
+    school.students,
+    "Male",
+    "Soccer",
+    "Rugby"
+  );
+
+  maleStudentsThatParticipateInBothSoccerAndRugby.push(
+    ...studentsThatMatchTheRequiredParameters
+  );
+});
+
 ```
 
 ## 4. Higher Order Array Functions Callback Function Parameters:
