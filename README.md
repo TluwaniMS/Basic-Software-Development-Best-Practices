@@ -74,6 +74,33 @@ createNewUser({
 });
 ```
 ## 2. Variable / Function Naming Best Practices:
+
+* Choose descriptive and clear names
+* Use names according to their context
+
+`Bad Practice`
+
+```
+const date =  new Date()
+```
+
+`Good Practice`
+
+```
+const currentDate = new Date()
+```
+
+`Bad Practice`
+
+```
+const getUser = (userId)=>{/*...*/}
+```
+
+`Good Practice`
+
+```
+const getUserById = (userId)=>{/*...*/}
+```
 ## 3. Deep Nesting / Nested Loops:
 ## 4. Higher Order Array Functions Callback Function Parameters:
 ## 5. DRY (Don't Repeat Yourself:
