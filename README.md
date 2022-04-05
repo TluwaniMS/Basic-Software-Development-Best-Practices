@@ -102,5 +102,26 @@ const getUser = (userId)=>{/*...*/}
 const getUserById = (userId)=>{/*...*/}
 ```
 ## 3. Deep Nesting / Nested Loops:
+
+
 ## 4. Higher Order Array Functions Callback Function Parameters:
 ## 5. DRY (Don't Repeat Yourself:
+## 6. Magic Numbers/Strings:
+
+Avoid Magic strings/numbers at all costs, and rather create a file with enumerators or variables to contain the values.
+
+`Bad Practice`
+
+```
+const totalWeeeksInAYear = 365 / 7;
+```
+
+`Good Practice`
+
+```
+const NUMBER_OF_DAYS_IN_A_WEEK = 7;
+
+const NUMBER_OF_DAYS_IN_A_YEAR = 365;
+
+const totalWeeksInAYear = NUMBER_OF_DAYS_IN_A_YEAR / NUMBER_OF_DAYS_IN_A_WEEK;
+```
